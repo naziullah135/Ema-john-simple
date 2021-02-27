@@ -15,17 +15,22 @@ const Cart = (props) => {
         shipping = 12.99;
     }
 
-    const tax = (total/10).toFixed(2);
-    const grandTotal = (total+shipping+Number(tax)).toFixed(2);
+    const tax = (total/10);
+    const grandTotal = total+shipping+Number(tax);
+
+    const formatNumber =  num =>{
+        const precision = num.toFixed(2);
+        return Number(precision);
+    }
 
     return (
         <div>
             <h3>Order Summary</h3>
             <h5>Items Ordered: {cart.length}</h5>
-            <p>Product Price: {total}</p>
+            <p>Product Price: {formatNumber(total)}</p>
             <p><small>Shipping Charge: {shipping}</small></p>
-            <p><small>Tax & Vat: {tax}</small></p>
-            <p>Total Price: {grandTotal}</p>
+            <p><small>Tax & Vat: {formatNumber(tax)}</small></p>
+            <p>Total Price: {formatNumber(grandTotal)}</p>
         </div>
     );
 };
