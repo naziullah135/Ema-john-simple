@@ -8,16 +8,16 @@ import {
 import fakeData from "../../fakeData";
 import ReviewItem from "../ReviewItem/ReviewItem";
 import Cart from "../Cart/Cart";
+import { useHistory } from "react-router";
 
 const Review = () => {
   const [cart, setCart] = useState([]);
   const [orderPlaced, setOrderPlaced] = useState(false);
+  const history = useHistory();
 
-  const handlePlaceOrder = () =>{
-      setCart([]);
-      setOrderPlaced(true);
-      processOrder();
-  }
+  const handleProccedCheckout = () => {
+    history.push('/shipment');
+  };
 
   const removeProduct = (productKey) => {
     const newCart = cart.filter((pd) => pd.key !== productKey);
@@ -36,8 +36,8 @@ const Review = () => {
     setCart(cartProducts);
   }, []);
   let thankyou;
-  if(orderPlaced){
-    thankyou= <img src={happyImg} />
+  if (orderPlaced) {
+    thankyou = <img src={happyImg} />;
   }
   return (
     <div className="twin-container">
@@ -52,9 +52,11 @@ const Review = () => {
         {thankyou}
       </div>
       <div className="cart-container">
-          <Cart cart={cart}>
-            <button onClick={handlePlaceOrder} className="cart-button">Place order</button>
-          </Cart>
+        <Cart cart={cart}>
+          <button onClick={handleProccedCheckout} className="cart-button">
+            Procced checkout
+          </button>
+        </Cart>
       </div>
     </div>
   );

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import fakeData from "../../fakeData";
-import {addToDatabaseCart,getDatabaseCart,
+import {
+  addToDatabaseCart,
+  getDatabaseCart,
 } from "../../utilities/databaseManager";
 import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
